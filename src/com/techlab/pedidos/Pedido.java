@@ -1,17 +1,12 @@
 package com.techlab.pedidos;
 
-import com.techlab.productos.Producto;
-import java.util.ArrayList;
-import java.util.List;
+import com.techlab.productos.ProductosList;
 
 public class Pedido {
 
-  Integer id;
-  List<Producto> productos;
+  ProductosList productos;
 
   public Pedido() {
-    this.productos = new ArrayList<>();
+    this.productos = new ProductosList();
   }
-
-  // TODO: agregar metodos
 }

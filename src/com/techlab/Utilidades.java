@@ -1,5 +1,11 @@
 package com.techlab;
 
+import com.techlab.opciones.AgregarProducto;
+import com.techlab.opciones.BuscarActualizarProducto;
+import com.techlab.opciones.CrearPedido;
+import com.techlab.opciones.EliminarProducto;
+import com.techlab.opciones.ListaPedidos;
+import com.techlab.opciones.ListaProductos;
 import com.techlab.pedidos.Pedido;
 import com.techlab.productos.Bebida;
 import com.techlab.productos.Comida;
@@ -30,28 +36,46 @@ public class Utilidades {
   }
 
   public static void ejecutarOpcion(int opcion, Scanner scanner,
-      ProductosList productos, List<Pedido> pedidos) {
+      ProductosList productos, Pedido pedidos) {
 
     switch (opcion) {
-      case 1:
+      case 1: // Agregar producto
         dejarEspacios(20);
         AgregarProducto.ejecutar(scanner, productos);
         enterParaContinuar(scanner);
         dejarEspacios(20);
         break;
-      case 2:
+      case 2: // Lista productos
         dejarEspacios(20);
         ListaProductos.ejecutar(productos);
         enterParaContinuar(scanner);
         dejarEspacios(20);
         break;
-      case 3:
+      case 3: // Buscar/Actualizar producto
         dejarEspacios(20);
         BuscarActualizarProducto.ejecutar(scanner, productos);
         enterParaContinuar(scanner);
         dejarEspacios(20);
         break;
-      case 0:
+      case 4: // Eliminar producto
+        dejarEspacios(20);
+        EliminarProducto.ejecutar(scanner, productos);
+        enterParaContinuar(scanner);
+        dejarEspacios(20);
+        break;
+      case 5: // Crear pedido
+        dejarEspacios(20);
+        CrearPedido.ejecutar(scanner, productos, pedidos);
+        enterParaContinuar(scanner);
+        dejarEspacios(20);
+        break;
+      case 6: // Lista pedidos
+        dejarEspacios(20);
+        ListaPedidos.ejecutar(pedidos);
+        enterParaContinuar(scanner);
+        dejarEspacios(20);
+        break;
+      case 0: // Salir
         System.out.println("Fin del programa...");
         break;
     }

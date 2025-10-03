@@ -1,5 +1,6 @@
-package com.techlab;
+package com.techlab.opciones;
 
+import com.techlab.Utilidades;
 import com.techlab.productos.ProductosList;
 
 public class ListaProductos {

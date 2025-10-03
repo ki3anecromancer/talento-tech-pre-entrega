@@ -29,6 +29,16 @@ public class ProductosList {
     productos.add(producto);
   }
 
+  public void eliminarProductoPorId(int id) {
+    for (int i = 0; i < productos.size(); i++) {
+      if (productos.get(i).getId() == id) {
+        productos.remove(i);
+        actualizarTodosLosAnchos();
+        break;
+      }
+    }
+  }
+
   public void agregarListaProductos(List<Producto> productos) {
     for (Producto producto : productos) {
       agregarProducto(producto);
@@ -162,8 +172,8 @@ public class ProductosList {
   public void mostrarProductoPorId(int id) {
     for (int i = 0; i < productos.size(); i++) {
       if (productos.get(i).getId() == id) {
-        mostrarCabeceraTabla(true, false, true, true, true, true, true);
-        mostrarTabla(productos.get(i), true, false, true, true, true, true, true);
+        mostrarCabeceraTabla(true, true, true, true, true, true, true);
+        mostrarTabla(productos.get(i), true, true, true, true, true, true, true);
         break;
       }
     }
@@ -227,7 +237,11 @@ public class ProductosList {
       sb.append(String.format(armarFormato(getIdMaxAncho(), "s"), "ID"));
     }
     if (tipo) {
-      sb.append(String.format("%-11s", "Tipo"));
+      if (productos.isEmpty()) {
+        sb.append(String.format("%-9s", "Tipo"));
+      } else {
+        sb.append(String.format("%-11s", "Tipo"));
+      }
     }
     if (nombre) {
       sb.append(String.format(armarFormato(getNombreMaxAncho(), "s"), "Nombre"));
@@ -273,5 +287,14 @@ public class ProductosList {
 
   public String getFormatoColumnaStock(Producto producto) {
     return String.format("%-" + stockMaxAncho + "s", producto.getStock());
+  }
+
+  public boolean existeId(int id) {
+    for (int i = 0; i < productos.size(); i++) {
+      if (productos.get(i).getId() == id) {
+        return true;
+      }
+    }
+    return false;
   }
 }

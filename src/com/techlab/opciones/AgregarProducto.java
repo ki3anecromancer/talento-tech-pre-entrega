@@ -1,5 +1,6 @@
-package com.techlab;
+package com.techlab.opciones;
 
+import com.techlab.Utilidades;
 import com.techlab.productos.Bebida;
 import com.techlab.productos.Comida;
 import com.techlab.productos.Producto;
@@ -131,23 +132,23 @@ public class AgregarProducto {
     Bebida producto1 = new Bebida("Agua Mineral con Gas", 1800.00, 2,
         "Ideal para hidratación", 1.5);
     Comida producto2 = new Comida("Empanadas de Carne (unidad)", 3000.00, 30,
-        "Clásico criollo horneado", 0.09);
+        "Clásico criollo horneado", 90.0);
     Bebida producto3 = new Bebida("Cerveza IPA Artesanal", 4500.00, 10,
         "Amarga y refrescante", 0.5);
     Comida producto4 = new Comida("Milanesa de Ternera con Papas Fritas", 10500.00, 8,
-        "Plato principal popular", 0.45);
+        "Plato principal popular", 450.0);
     Bebida producto5 = new Bebida("Jugo de Naranja Natural", 3200.00, 12,
         "Recién exprimido", 0.5);
     Comida producto6 = new Comida("Sándwich de Miga Triple", 4800.00, 25,
-        "Relleno de jamón y queso", 0.3);
+        "Relleno de jamón y queso", 300.0);
     Bebida producto7 = new Bebida("Vino Malbec Joven", 8900.00, 6,
         "Tinto ligero y afrutado", 0.75);
     Comida producto8 = new Comida("Pizza Muzzarella (Grande)", 14000.00, 5,
-        "Con abundante queso", 0.75);
+        "Con abundante queso", 750.0);
     Bebida producto9 = new Bebida("Gaseosa Limón (Marca Local)", 2600.00, 20,
         "Sabor cítrico burbujeante", 1.5);
     Comida producto10 = new Comida("Alfajor de Maicena", 1500.00, 40,
-        "Dulce de leche y coco", 0.1);
+        "Dulce de leche y coco", 100.0);
 
     productos.agregarProducto(producto1);
     productos.agregarProducto(producto2);
