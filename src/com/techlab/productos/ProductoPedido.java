@@ -1,6 +1,6 @@
 package com.techlab.productos;
 
-public class Producto {
+public class ProductoPedido {
 
   // Tamaño de la columna en consola
   private int volumenMaxAncho = 12;
@@ -12,7 +12,7 @@ public class Producto {
   private String descripcion; // opcional
   private int stock;
 
-  public Producto(String nombre, double precio, int stock, String descripcion) {
+  public ProductoPedido(String nombre, double precio, int stock, String descripcion) {
     id = contadorId;
     contadorId++; // autoincremental cada vez que se genera un nuevo producto
     this.nombre = nombre;
@@ -27,11 +27,6 @@ public class Producto {
 
   public void calcularVolumenancho(int nuevoAncho) {
     volumenMaxAncho = calcularAncho(volumenMaxAncho, nuevoAncho);
-  }
-
-  public void setIdReducirContador(int id) {
-    this.id = id;
-    contadorId--;
   }
 
   public int getId() {

@@ -38,7 +38,7 @@ public class EliminarProducto {
 
     if (productos.existeId(id)) {
       System.out.println("\nEstá por eliminar el producto:");
-      productos.mostrarProductoPorId(id);
+      productos.mostrarProductoPorId(id, true, true, true, true, true, true, true);
 
       System.out.println("\nConfirmar eliminación");
       if (Utilidades.opcionSiNo(scanner)) {

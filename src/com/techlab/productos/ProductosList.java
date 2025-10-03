@@ -2,6 +2,7 @@ package com.techlab.productos;
 
 import static com.techlab.Utilidades.armarFormato;
 
+import com.techlab.Utilidades;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,7 +66,7 @@ public class ProductosList {
     volumenMaxAncho = producto.getVolumenMaxAncho();
   }
 
-  private void actualizarTodosLosAnchos() {
+  public void actualizarTodosLosAnchos() {
     int idAncho = 7;
     int nombreAncho = 11;
     int precioAncho = 10;
@@ -124,23 +125,23 @@ public class ProductosList {
     return Integer.toString((int) double_convertir).length() + espacioExtra;
   }
 
-  public int getIdMaxAncho() {
+  private int getIdMaxAncho() {
     return idMaxAncho;
   }
 
-  public int getNombreMaxAncho() {
+  private int getNombreMaxAncho() {
     return nombreMaxAncho;
   }
 
-  public int getPrecioMaxAncho() {
+  private int getPrecioMaxAncho() {
     return precioMaxAncho;
   }
 
-  public int getStockMaxAncho() {
+  private int getStockMaxAncho() {
     return stockMaxAncho;
   }
 
-  public int getVolumenMaxAncho() {
+  private int getVolumenMaxAncho() {
     return volumenMaxAncho;
   }
 
@@ -169,19 +170,16 @@ public class ProductosList {
     actualizarTodosLosAnchos();
   }
 
-  public void mostrarProductoPorId(int id) {
-    for (int i = 0; i < productos.size(); i++) {
-      if (productos.get(i).getId() == id) {
-        mostrarCabeceraTabla(true, true, true, true, true, true, true);
-        mostrarTabla(productos.get(i), true, true, true, true, true, true, true);
-        break;
-      }
-    }
+  public void mostrarProductoPorId(int idProducto, boolean id, boolean tipo, boolean nombre,
+      boolean volumen, boolean precio, boolean stock, boolean descripcion) {
+
+      ProductosList listaProductos = new ProductosList();
+      listaProductos.agregarProducto(Utilidades.buscarProductoPorId(productos, idProducto));
+      listaProductos.mostrarListaProductos(true, true, true, true, true, true, true);
   }
 
   public void mostrarTabla(Producto producto, boolean id, boolean tipo, boolean nombre,
-      boolean volumenLitros,
-      boolean precio, boolean stock, boolean descripcion) {
+      boolean volumen, boolean precio, boolean stock, boolean descripcion) {
 
     StringBuilder sb = new StringBuilder();
 
@@ -198,7 +196,7 @@ public class ProductosList {
     if (nombre) {
       sb.append(getFormatoColumnaNombre(producto));
     }
-    if (volumenLitros) {
+    if (volumen) {
       if (producto.getClass() == Bebida.class) {
         sb.append(getFormatoColumnaVolumenLitros(((Bebida) producto).getVolumenLitros()));
       } else if (producto.getClass() == Comida.class) {
@@ -265,27 +263,27 @@ public class ProductosList {
     System.out.println(cabecera);
   }
 
-  public String getFormatoColumnaNombre(Producto producto) {
+  private String getFormatoColumnaNombre(Producto producto) {
     return String.format("%-" + nombreMaxAncho + "s", producto.getNombre());
   }
 
-  public String getFormatoColumnaVolumenGramos(double volumen) {
+  private String getFormatoColumnaVolumenGramos(double volumen) {
     return String.format("%-" + volumenMaxAncho + "s", String.format("%.2f gr.", volumen));
   }
 
-  public String getFormatoColumnaVolumenLitros(double volumen) {
+  private String getFormatoColumnaVolumenLitros(double volumen) {
     return String.format("%-" + volumenMaxAncho + "s", String.format("%.2f L.", volumen));
   }
 
-  public String getFormatoColumnaId(Producto producto) {
+  private String getFormatoColumnaId(Producto producto) {
     return String.format("%-" + idMaxAncho + "d", producto.getId());
   }
 
-  public String getFormatoColumnaPrecio(Producto producto) {
+  private String getFormatoColumnaPrecio(Producto producto) {
     return String.format("$%-" + precioMaxAncho + ".2f", producto.getPrecio());
   }
 
-  public String getFormatoColumnaStock(Producto producto) {
+  private String getFormatoColumnaStock(Producto producto) {
     return String.format("%-" + stockMaxAncho + "s", producto.getStock());
   }
 
@@ -296,5 +294,14 @@ public class ProductosList {
       }
     }
     return false;
+  }
+
+  public Producto getProductoPorId(int id) {
+    for (int i = 0; i < productos.size(); i++) {
+      if (productos.get(i).getId() == id) {
+        return productos.get(i);
+      }
+    }
+    return null;
   }
 }

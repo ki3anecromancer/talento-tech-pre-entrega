@@ -71,18 +71,15 @@ public class BuscarActualizarProducto {
   }
 
   private static void buscarProductoPorId(Scanner scanner, ProductosList productos) {
-    ProductosList listaProductos = new ProductosList();
     int id;
 
     id = Utilidades.integerValido(scanner, true, "ID del producto: ");
 
     // Agregar producto solo si existe uno con la id requerida
-    if (Utilidades.buscarProductoPorId(productos.getLista(), id) != null) {
-      listaProductos.agregarProducto(Utilidades.buscarProductoPorId(productos.getLista(), id));
-
+    if (productos.existeId(id)) {
       System.out.printf("\n\tProducto que coincide con la ID '%d'%n", id);
-
-      listaProductos.mostrarListaProductos(true, true, true, true, true, true, true);
+      productos.mostrarProductoPorId(
+          id, true, true, true, true, true, true, true);
     } else {
       System.out.println(
           "\n(!) No se ha encontrado ningún producto que coincida con la ID: " + id);
@@ -114,12 +111,12 @@ public class BuscarActualizarProducto {
     id = Utilidades.integerValido(scanner, true, "ID del producto: ");
 
     // Si existe un producto con la id, proceder a modificar
-    if (Utilidades.buscarProductoPorId(productos.getLista(), id) != null) {
+    if (productos.existeId(id)) {
       // Agregar a ProductoList para tener sus métodos y poder mostrar
       listaProductos.agregarProducto(Utilidades.buscarProductoPorId(productos.getLista(), id));
 
       System.out.println("\nEstá por editar el producto:");
-      productos.mostrarProductoPorId(id);
+      productos.mostrarProductoPorId(id, true, true ,true, true, true, true, true);
 
       System.out.println("\n¿Desea continuar?");
       if (Utilidades.opcionSiNo(scanner)) {

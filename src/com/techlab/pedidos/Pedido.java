@@ -4,9 +4,13 @@ import com.techlab.productos.ProductosList;
 
 public class Pedido {
 
-  ProductosList productos;
+  private ProductosList productos;
 
   public Pedido() {
     this.productos = new ProductosList();
+  }
+
+  public ProductosList getProductos() {
+    return productos;
   }
 }
