@@ -10,6 +10,6 @@ public class ListaProductos {
     Utilidades.mostrarCartel(30, "LISTA DE PRODUCTOS");
 
     // Mostrar datos en forma de tabla
-    productos.mostrarListaProductos(true, false, true, true, true, true, true);
+    productos.mostrarListaProductos(true, true, true, true, true, true, true);
   }
 }

@@ -35,7 +35,7 @@ public class Utilidades {
     switch (opcion) {
       case 1:
         dejarEspacios(20);
-        AgregarProducto.ejecutar(scanner, productos.getLista());
+        AgregarProducto.ejecutar(scanner, productos);
         enterParaContinuar(scanner);
         dejarEspacios(20);
         break;

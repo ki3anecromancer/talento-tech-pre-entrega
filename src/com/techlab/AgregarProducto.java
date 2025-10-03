@@ -3,22 +3,32 @@ package com.techlab;
 import com.techlab.productos.Bebida;
 import com.techlab.productos.Comida;
 import com.techlab.productos.Producto;
-import java.util.List;
+import com.techlab.productos.ProductosList;
 import java.util.Scanner;
 
 public class AgregarProducto {
 
-  private AgregarProducto() {}
+  private AgregarProducto() {
+  }
 
-  public static void ejecutar(Scanner scanner, List<Producto> productos) {
+  public static void ejecutar(Scanner scanner, ProductosList productos) {
 
     Utilidades.mostrarCartel(30, "AGREGAR PRODUCTO");
 
-    // Dar la posibilidad de cancelar y regresar
-    if (opcionInicial(scanner) == 0) {
-      return;
-    }
+    int opcion = opcionInicial(scanner);
 
+    switch (opcion) {
+      case 1: // Crear nuevo producto
+        agregarProducto(scanner, productos);
+        break;
+      case 2: // [Testing] Cargar la lista con 10 productos
+        cargarLista(productos);
+        break;
+      case 0: // Regresar
+    }
+  }
+
+  private static void agregarProducto(Scanner scanner, ProductosList productos) {
     String tipo;
     String nombre;
     Double precio;
@@ -74,7 +84,7 @@ public class AgregarProducto {
       }
 
       // Agregar el producto a la lista
-      productos.add(producto);
+      productos.agregarProducto(producto);
       System.out.println("\nEl producto ha sido agregaddo con éxito.");
     } else {
       System.out.println("\nEl producto no ha sido agregado.");
@@ -100,7 +110,7 @@ public class AgregarProducto {
 
     if (tipo.equalsIgnoreCase("Bebida")) {
       mensaje = String.format("Volumen en litros: %.2f L.", volumenLitros);
-    } else if (tipo.equalsIgnoreCase("Comida")){
+    } else if (tipo.equalsIgnoreCase("Comida")) {
       mensaje = String.format("Peso en gramos: %.2f gr.", pesoGramos);
     }
 
@@ -110,9 +120,46 @@ public class AgregarProducto {
   private static int opcionInicial(Scanner scanner) {
     System.out.println("""
         1. Crear nuevo producto
+        2. [Testing] Cargar la lista con 10 productos
         0. Regresar
         """);
 
-    return Utilidades.elijaUnaOpcion(scanner, 0, 1);
+    return Utilidades.elijaUnaOpcion(scanner, 0, 2);
+  }
+
+  private static void cargarLista(ProductosList productos) {
+    Bebida producto1 = new Bebida("Agua Mineral con Gas", 1800.00, 2,
+        "Ideal para hidratación", 1.5);
+    Comida producto2 = new Comida("Empanadas de Carne (unidad)", 3000.00, 30,
+        "Clásico criollo horneado", 0.09);
+    Bebida producto3 = new Bebida("Cerveza IPA Artesanal", 4500.00, 10,
+        "Amarga y refrescante", 0.5);
+    Comida producto4 = new Comida("Milanesa de Ternera con Papas Fritas", 10500.00, 8,
+        "Plato principal popular", 0.45);
+    Bebida producto5 = new Bebida("Jugo de Naranja Natural", 3200.00, 12,
+        "Recién exprimido", 0.5);
+    Comida producto6 = new Comida("Sándwich de Miga Triple", 4800.00, 25,
+        "Relleno de jamón y queso", 0.3);
+    Bebida producto7 = new Bebida("Vino Malbec Joven", 8900.00, 6,
+        "Tinto ligero y afrutado", 0.75);
+    Comida producto8 = new Comida("Pizza Muzzarella (Grande)", 14000.00, 5,
+        "Con abundante queso", 0.75);
+    Bebida producto9 = new Bebida("Gaseosa Limón (Marca Local)", 2600.00, 20,
+        "Sabor cítrico burbujeante", 1.5);
+    Comida producto10 = new Comida("Alfajor de Maicena", 1500.00, 40,
+        "Dulce de leche y coco", 0.1);
+
+    productos.agregarProducto(producto1);
+    productos.agregarProducto(producto2);
+    productos.agregarProducto(producto3);
+    productos.agregarProducto(producto4);
+    productos.agregarProducto(producto5);
+    productos.agregarProducto(producto6);
+    productos.agregarProducto(producto7);
+    productos.agregarProducto(producto8);
+    productos.agregarProducto(producto9);
+    productos.agregarProducto(producto10);
+
+    System.out.println("\nSe han agregado 10 productos para probar funcionalidades.");
   }
 }

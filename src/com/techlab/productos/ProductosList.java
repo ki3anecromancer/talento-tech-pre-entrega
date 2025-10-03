@@ -227,7 +227,7 @@ public class ProductosList {
       sb.append(String.format(armarFormato(getIdMaxAncho(), "s"), "ID"));
     }
     if (tipo) {
-      sb.append(String.format("%-10s", "Tipo"));
+      sb.append(String.format("%-11s", "Tipo"));
     }
     if (nombre) {
       sb.append(String.format(armarFormato(getNombreMaxAncho(), "s"), "Nombre"));

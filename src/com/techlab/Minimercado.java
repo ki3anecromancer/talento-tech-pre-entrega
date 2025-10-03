@@ -22,19 +22,19 @@ public class Minimercado {
   public void abrir() {
 
     // TODO: ELIMINAR EJEMPLOS DE PRUEBA
-    Bebida bebida = new Bebida(
-        "Coca-Cola Zero", 4.00, 5, "", 1.25);
-
-    Comida comida = new Comida(
-        "Nachos con Queso Frito", 6.99, 15, "", 0.9);
-
-    Comida comida2 = new Comida(
-        "Comida con un nombre bastante largo", 123456789.12, 1234567890,
-        "Comida larga", 1234567890.12);
-
-    productos.agregarProducto(bebida);
-    productos.agregarProducto(comida);
-    productos.agregarProducto(comida2);
+//    Bebida bebida = new Bebida(
+//        "Coca-Cola Zero", 4.00, 5, "", 1.25);
+//
+//    Comida comida = new Comida(
+//        "Nachos con Queso Frito", 6.99, 15, "", 0.9);
+//
+//    Comida comida2 = new Comida(
+//        "Comida con un nombre bastante largo", 123456789.12, 1234567890,
+//        "Comida larga", 1234567890.12);
+//
+//    productos.agregarProducto(bebida);
+//    productos.agregarProducto(comida);
+//    productos.agregarProducto(comida2);
     // FIN EJEMPLOS DE PRUEBA
 
     int opcion;

@@ -48,7 +48,7 @@ public class BuscarActualizarProducto {
               "\n(!) No se ha encontrado ningún producto que coincida con el nombre: " + nombre);
         } else {
           System.out.printf("\n\tProductos que coinciden con el nombre '%s'%n", nombre);
-          listaProductos.mostrarListaProductos(true, false, true, true, true, true, true);
+          listaProductos.mostrarListaProductos(true, true, true, true, true, true, true);
         }
         break;
       case 2: // Buscar por ID
@@ -61,7 +61,7 @@ public class BuscarActualizarProducto {
 
           System.out.printf("\n\tProducto que coincide con la ID '%d'%n", id);
 
-          listaProductos.mostrarListaProductos(true, false, true, true, true, true, true);
+          listaProductos.mostrarListaProductos(true, true, true, true, true, true, true);
         } else {
           System.out.println(
               "\n(!) No se ha encontrado ningún producto que coincida con la ID: " + id);
@@ -78,7 +78,7 @@ public class BuscarActualizarProducto {
               "\n(!) No se ha encontrado ningún producto que coincida con el tipo: " + tipo);
         } else {
           System.out.printf("\n\tProductos que coinciden con el tipo '%s'%n", tipo);
-          listaProductos.mostrarListaProductos(true, false, true, true, true, true, true);
+          listaProductos.mostrarListaProductos(true, true, true, true, true, true, true);
         }
         break;
       case 4: // Actualizar por ID
@@ -98,11 +98,11 @@ public class BuscarActualizarProducto {
             System.out.println("\nIngrese los nuevos valores");
             System.out.print("Nombre: ");
             nombre = Utilidades.textoSinEspaciosExtra(scanner);
+            double contenido = Utilidades.doubleValido(scanner, true, "Volumen: ");
             double precio = Utilidades.doubleValido(scanner, true, "Precio: ");
             int stock = Utilidades.integerValido(scanner, true, "Stock: ");
             System.out.print("Descripción: ");
             String descripcion = Utilidades.textoSinEspaciosExtra(scanner);
-            double contenido = Utilidades.doubleValido(scanner, true, "Volumen: ");
 
             System.out.println("\nConfirmar:");
             if (Utilidades.opcionSiNo(scanner)) {
@@ -112,7 +112,6 @@ public class BuscarActualizarProducto {
               System.out.println("\nEl producto no ha sido modificado.");
             }
           }
-
         } else {
           System.out.println(
               "\n(!) No se ha encontrado ningún producto que coincida con la ID: " + id);
