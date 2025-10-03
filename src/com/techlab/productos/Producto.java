@@ -3,7 +3,7 @@ package com.techlab.productos;
 public class Producto {
 
   // Tamaño de la columna en consola
-  private int volumenMaxAncho = 10;
+  private int volumenMaxAncho = 12;
 
   private static int contadorId = 1; // Único y auto-incremental
   private int id;
@@ -65,7 +65,7 @@ public class Producto {
     this.descripcion = descripcion;
   }
 
-  public int getVolumenAncho() {
+  public int getVolumenMaxAncho() {
     return volumenMaxAncho;
   }
 }

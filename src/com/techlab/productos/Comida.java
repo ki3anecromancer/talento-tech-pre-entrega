@@ -2,21 +2,30 @@ package com.techlab.productos;
 
 public class Comida extends Producto {
 
-  Double pesoGramos;
+  private double pesoGramos;
+  private int anchoVolumen;
 
   public Comida(String nombre, Double precio, int stock, String descripcion, double pesoGramos) {
     super(nombre, precio, stock, descripcion);
     this.pesoGramos = pesoGramos;
 
-    calcularVolumenancho(Integer.toString((int) pesoGramos).length() + 7);
+    anchoVolumen = Integer.toString((int) pesoGramos).length() + 7;
+
+    calcularVolumenancho(anchoVolumen);
   }
 
-  public Double getPesoGramos() {
+  public double getPesoGramos() {
     return pesoGramos;
   }
 
-  public void setPesoGramos(Double pesoGramos) {
+  public void setPesoGramos(double pesoGramos) {
     this.pesoGramos = pesoGramos;
+    anchoVolumen = Integer.toString((int) pesoGramos).length() + 7;
+    calcularVolumenancho(anchoVolumen);
+  }
+
+  public int getAnchoVolumen() {
+    return anchoVolumen;
   }
 
   @Override

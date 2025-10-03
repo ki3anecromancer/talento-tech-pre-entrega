@@ -47,7 +47,7 @@ public class Utilidades {
         break;
       case 3:
         dejarEspacios(20);
-        BuscarActualizarProducto.ejecutar(scanner, productos.getLista());
+        BuscarActualizarProducto.ejecutar(scanner, productos);
         enterParaContinuar(scanner);
         dejarEspacios(20);
         break;
@@ -239,8 +239,21 @@ public class Utilidades {
         """);
 
     System.out.println();
-    opcion = Utilidades.elijaUnaOpcion(scanner, 1, 2);
+    opcion = elijaUnaOpcion(scanner, 1, 2);
 
     return opcion == 1 ? "Bebida" : "Comida";
+  }
+
+  public static boolean opcionSiNo(Scanner scanner) {
+    int opcion;
+
+    System.out.println("""
+        1. Si
+        2. No
+        """);
+
+    opcion = elijaUnaOpcion(scanner, 1, 2);
+
+    return opcion == 1;
   }
 }
