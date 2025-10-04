@@ -73,4 +73,8 @@ public class Producto {
   public int getVolumenMaxAncho() {
     return volumenMaxAncho;
   }
+
+  public double getPrecioTotal() {
+    return stock * precio;
+  }
 }

@@ -1,7 +1,7 @@
 package com.techlab.opciones;
 
 import com.techlab.Utilidades;
-import com.techlab.pedidos.Pedido;
+import com.techlab.pedidos.Pedidos;
 import com.techlab.productos.Bebida;
 import com.techlab.productos.Comida;
 import com.techlab.productos.Producto;
@@ -13,7 +13,7 @@ public class CrearPedido {
   private CrearPedido() {
   }
 
-  public static void ejecutar(Scanner scanner, ProductosList productos, Pedido pedidos) {
+  public static void ejecutar(Scanner scanner, ProductosList productos, Pedidos pedidos) {
     int opcion;
 
     do {
@@ -39,7 +39,7 @@ public class CrearPedido {
         """);
   }
 
-  private static void crearPedido(Scanner scanner, ProductosList productos, Pedido pedidos) {
+  private static void crearPedido(Scanner scanner, ProductosList productos, Pedidos pedidos) {
     int id;
 
     System.out.println();
@@ -64,9 +64,9 @@ public class CrearPedido {
           System.out.println("\n(!) No se pueden agregar 0 productos. Ingrese una cantidad real.");
         } else {
           Utilidades.crearLineas(30, true);
-          System.out.println("\nPedido solicitado:");
+          System.out.println("\nPedidos solicitado:");
           System.out.printf("%18s %d x %s",
-              "Pedido:", cantidad, productos.getProductoPorId(id).getNombre());
+              "Pedidos:", cantidad, productos.getProductoPorId(id).getNombre());
           System.out.printf("%n%18s $%.2f",
               "Precio por unidad:", productos.getProductoPorId(id).getPrecio());
           System.out.printf("%n%18s $%.2f%n",
@@ -75,7 +75,7 @@ public class CrearPedido {
           System.out.println("\nConfirmar pedido");
           if (Utilidades.opcionSiNo(scanner)) {
 
-            // Crear el nuevo pedido y agregarlo
+            // Crear el nuevo pedido
             Producto nuevo = null;
 
             if (productos.getProductoPorId(id).getClass() == Bebida.class) {
@@ -94,10 +94,11 @@ public class CrearPedido {
                   ((Comida) productos.getProductoPorId(id)).getPesoGramos());
             }
 
-            pedidos.getProductos().agregarProducto(nuevo);
-
             // Modificar su id y reestablecer el id autoincremental
             nuevo.setIdReducirContador(productos.getProductoPorId(id).getId());
+
+            // Agregar el pedido nuevo
+            pedidos.crearPedido(nuevo);
 
             // Modificar el stock
             int stock = productos.getProductoPorId(id).getStock();
@@ -109,7 +110,7 @@ public class CrearPedido {
 
             System.out.println("\nEl pedido ha sido realizado con éxito.");
           } else {
-            System.out.println("\nPedido cancelado.");
+            System.out.println("\nPedidos cancelado.");
           }
         }
       }

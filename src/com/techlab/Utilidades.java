@@ -6,7 +6,7 @@ import com.techlab.opciones.CrearPedido;
 import com.techlab.opciones.EliminarProducto;
 import com.techlab.opciones.ListaPedidos;
 import com.techlab.opciones.ListaProductos;
-import com.techlab.pedidos.Pedido;
+import com.techlab.pedidos.Pedidos;
 import com.techlab.productos.Bebida;
 import com.techlab.productos.Comida;
 import com.techlab.productos.Producto;
@@ -36,7 +36,7 @@ public class Utilidades {
   }
 
   public static void ejecutarOpcion(int opcion, Scanner scanner,
-      ProductosList productos, Pedido pedidos) {
+      ProductosList productos, Pedidos pedidos) {
 
     switch (opcion) {
       case 1: // Agregar producto
@@ -71,7 +71,7 @@ public class Utilidades {
         break;
       case 6: // Lista pedidos
         dejarEspacios(20);
-        ListaPedidos.ejecutar(pedidos);
+        ListaPedidos.ejecutar(scanner, productos, pedidos);
         enterParaContinuar(scanner);
         dejarEspacios(20);
         break;

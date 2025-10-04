@@ -304,4 +304,8 @@ public class ProductosList {
     }
     return null;
   }
+
+  public boolean estaVacia() {
+    return productos.isEmpty();
+  }
 }

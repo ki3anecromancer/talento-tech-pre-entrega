@@ -1,6 +1,6 @@
 package com.techlab;
 
-import com.techlab.pedidos.Pedido;
+import com.techlab.pedidos.Pedidos;
 import com.techlab.productos.ProductosList;
 import java.util.Scanner;
 
@@ -8,11 +8,11 @@ public class Minimercado {
 
   private Scanner scanner = new Scanner(System.in);
   private ProductosList productos;
-  private Pedido pedidos;
+  private Pedidos pedidos;
 
   public Minimercado() {
     productos = new ProductosList();
-    pedidos = new Pedido();
+    pedidos = new Pedidos();
   }
 
   public void abrir() {
