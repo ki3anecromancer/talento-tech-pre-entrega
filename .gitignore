@@ -1,0 +1,11 @@
+# Ignorar archivos .class
+*.class
+
+# Ignorar directorios de compilación/artefactos
+/target/
+/bin/
+/out/
+
+# Ignorar configuraciones de IDE
+.idea/
+*.iml
