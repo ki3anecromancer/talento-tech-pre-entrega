@@ -159,9 +159,9 @@ public class ProductosList {
   public void mostrarProductoPorId(int idProducto, boolean id, boolean tipo, boolean nombre,
       boolean volumen, boolean precio, boolean stock, boolean descripcion) {
 
-      ProductosList listaProductos = new ProductosList();
-      listaProductos.agregarProducto(Utilidades.buscarProductoPorId(productos, idProducto));
-      listaProductos.mostrarListaProductos(true, true, true, true, true, true, true);
+    ProductosList listaProductos = new ProductosList();
+    listaProductos.agregarProducto(Utilidades.buscarProductoPorId(productos, idProducto));
+    listaProductos.mostrarListaProductos(id, tipo, nombre, volumen, precio, stock, descripcion);
   }
 
   public void mostrarTabla(Producto producto, boolean id, boolean tipo, boolean nombre,

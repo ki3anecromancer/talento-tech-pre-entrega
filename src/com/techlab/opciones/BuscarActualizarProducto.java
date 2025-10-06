@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class BuscarActualizarProducto {
 
-  private BuscarActualizarProducto() {}
+  private BuscarActualizarProducto() {
+  }
 
   public static void ejecutar(Scanner scanner, ProductosList productos) {
     int opcion;
@@ -58,7 +59,8 @@ public class BuscarActualizarProducto {
     nombre = Utilidades.textoSinEspaciosExtra(scanner, false, "Nombre del producto: ");
 
     // Armar lista con productos que contengan el nombre
-    listaProductos.agregarListaProductos(Utilidades.buscarProductosPorNombreParcial(productos.getLista(), nombre));
+    listaProductos.agregarListaProductos(
+        Utilidades.buscarProductosPorNombreParcial(productos.getLista(), nombre));
 
     Utilidades.crearLineas(30, true);
     // Mostrar lista de coincidencias en caso de no estar vacía
@@ -93,7 +95,8 @@ public class BuscarActualizarProducto {
     String tipo;
 
     tipo = Utilidades.elegirTipo(scanner);
-    listaProductos.agregarListaProductos(Utilidades.buscarProductosPorTipo(productos.getLista(), tipo));
+    listaProductos.agregarListaProductos(
+        Utilidades.buscarProductosPorTipo(productos.getLista(), tipo));
 
     Utilidades.crearLineas(30, true);
     // Mostrar lista de coincidencias en caso de no estar vacía
@@ -125,7 +128,7 @@ public class BuscarActualizarProducto {
       tipo = Utilidades.buscarProductoPorId(productos.getLista(), id).getTipo();
 
       System.out.println("Está por editar el producto:");
-      productos.mostrarProductoPorId(id, true, true ,true, true, true, true, true);
+      productos.mostrarProductoPorId(id, true, true, true, true, true, true, true);
 
       System.out.println("\n¿Desea continuar?");
       if (Utilidades.opcionSiNo(scanner)) {

@@ -5,7 +5,8 @@ import com.techlab.productos.ProductosList;
 
 public class ListaProductos {
 
-  private ListaProductos() {}
+  private ListaProductos() {
+  }
 
   public static void ejecutar(ProductosList productos) {
     Utilidades.mostrarCartel(30, "LISTA DE PRODUCTOS");

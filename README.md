@@ -36,7 +36,9 @@ se refleja en el stock del producto requerido.
 - Advertencia: el proyecto fue usado para experimentar e ir agregando o modificando contenido a
   medida que se me ocurría, por lo que no está debidamente ordenado.
 
-- (Contenido libre de Inteligencia Artificial).
+- (Contenido libre de Inteligencia Artificial, sólo usada para comandos Git y .gitignore).
+
+- El proyecto fue creado con lo presentado en el aula hasta la clase 8.
 
 ## Descripción del código:
 

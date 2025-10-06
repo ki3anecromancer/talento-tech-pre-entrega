@@ -2,16 +2,14 @@ package com.techlab.productos;
 
 public class Producto {
 
+  private static int contadorId = 1; // Único y auto-incremental, simula Base de Datos
   // Tamaño de la columna en consola
   private int volumenMaxAncho = 12;
-
   // Ancho de cada atributo
   private int anchoId;
   private int anchoNombre;
   private int anchoPrecio;
   private int anchoStock;
-
-  private static int contadorId = 1; // Único y auto-incremental, simula Base de Datos
   private int id;
   private String nombre;
   private double precio;
