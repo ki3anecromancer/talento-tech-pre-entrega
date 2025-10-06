@@ -206,10 +206,15 @@ public class ProductosList {
   public void mostrarListaProductos(boolean id, boolean tipo, boolean nombre,
       boolean volumen, boolean precio, boolean stock, boolean descripcion) {
 
-    mostrarCabeceraTabla(id, tipo, nombre, volumen, precio, stock, descripcion);
+    // Mostrar mensaje si no hay productos
+    if (productos.isEmpty()) {
+      System.out.println("No hay productos en la lista actualmente.");
+    } else {
+      mostrarCabeceraTabla(id, tipo, nombre, volumen, precio, stock, descripcion);
 
-    for (Producto producto : this.getLista()) {
-      mostrarTabla(producto, id, tipo, nombre, volumen, precio, stock, descripcion);
+      for (Producto producto : this.getLista()) {
+        mostrarTabla(producto, id, tipo, nombre, volumen, precio, stock, descripcion);
+      }
     }
   }
 

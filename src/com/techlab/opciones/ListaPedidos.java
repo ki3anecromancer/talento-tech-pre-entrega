@@ -14,7 +14,7 @@ public class ListaPedidos {
     Utilidades.mostrarCartel(30, "LISTA DE PEDIDOS");
 
     if (pedidos.getProductos().estaVacia()) {
-      System.out.println("\nLa lista de pedidos se encuentre actualmente vacía.");
+      System.out.println("La lista de pedidos se encuentre actualmente vacía.");
     } else {
       pedidos.getProductos().mostrarListaProductos(true, true, true, true, true, true, true);
 
@@ -53,13 +53,13 @@ public class ListaPedidos {
     int stockMax;
 
     Utilidades.crearLineas(30, true);
-    id = Utilidades.integerValido(scanner, true, "Ingrese la ID del producto: ");
+    id = Utilidades.integerValido(scanner, true, "Ingrese la ID del pedido: ");
 
     if (pedidos.getProductos().existeId(id)) {
       stockMax = productos.getProductoPorId(id).getStock() +
           pedidos.getProductos().getProductoPorId(id).getStock();
 
-      System.out.println("\nProducto seleccionado:");
+      System.out.println("\nPedido seleccionado:");
       pedidos.getProductos().mostrarProductoPorId(id, true, true, true, true, true, true, true);
 
       System.out.printf("%nCantidad de stock aún disponible: %d%n",
@@ -82,7 +82,7 @@ public class ListaPedidos {
       }
     } else {
       Utilidades.crearLineas(30, true);
-      System.out.println("(!) No existe un producto con la ID: " + id);
+      System.out.println("(!) No existe un pedido con la ID: " + id);
     }
   }
 
@@ -91,14 +91,14 @@ public class ListaPedidos {
     int stockMax;
 
     Utilidades.crearLineas(30, true);
-    id = Utilidades.integerValido(scanner, true, "Ingrese la ID del producto: ");
+    id = Utilidades.integerValido(scanner, true, "Ingrese la ID del pedido: ");
 
     Utilidades.crearLineas(30, true);
     // Si no existe: cancelar
     if (!pedidos.getProductos().existeId(id)) {
-      System.out.println("(!) No existe un producto con la ID: " + id);
+      System.out.println("(!) No existe un pedido con la ID: " + id);
     } else {
-      System.out.println("Producto seleccionado:");
+      System.out.println("Pedido seleccionado:");
       pedidos.getProductos().mostrarProductoPorId(id, true, true, true, true, true, true, true);
 
       System.out.println("\nConfirmar eliminación");

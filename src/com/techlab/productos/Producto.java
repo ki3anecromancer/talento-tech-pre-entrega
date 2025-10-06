@@ -17,14 +17,16 @@ public class Producto {
   private double precio;
   private String descripcion; // opcional
   private int stock;
+  private String tipo;
 
-  public Producto(String nombre, double precio, int stock, String descripcion) {
+  public Producto(String nombre, double precio, int stock, String descripcion, String tipo) {
     id = contadorId;
     contadorId++; // autoincremental cada vez que se genera un nuevo producto
     this.nombre = nombre;
     this.precio = precio;
     this.stock = stock;
     this.descripcion = descripcion;
+    this.tipo = tipo;
 
     // Definir los anchos
     anchoId = anchoInt(id);
@@ -99,6 +101,10 @@ public class Producto {
 
   public double getPrecioTotal() {
     return stock * precio;
+  }
+
+  public String getTipo() {
+    return tipo;
   }
 
   // Getters de ancho

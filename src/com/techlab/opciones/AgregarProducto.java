@@ -20,9 +20,11 @@ public class AgregarProducto {
 
     switch (opcion) {
       case 1: // Crear nuevo producto
+        Utilidades.crearLineas(30, true);
         agregarProducto(scanner, productos);
         break;
       case 2: // [Testing] Cargar la lista con 10 productos
+        Utilidades.crearLineas(30, true);
         cargarLista(productos);
         break;
       case 0: // Regresar
@@ -40,42 +42,41 @@ public class AgregarProducto {
     Double pesoGramos = 0.0;
 
     // asignara variables verificadas
-    System.out.println();
     tipo = Utilidades.elegirTipo(scanner);
 
     switch (tipo) {
       case "Bebida":
         volumenLitros = Utilidades.doubleValido(
-            scanner, true, "Volumen en litros: ");
+            scanner, true, false, "Volumen en litros: ");
         break;
       case "Comida":
         pesoGramos = Utilidades.doubleValido(
-            scanner, true, "Peso en gramos: ");
+            scanner, true, false, "Peso en gramos: ");
         break;
     }
 
-    System.out.print("Nombre: ");
-    nombre = Utilidades.textoSinEspaciosExtra(scanner);
+    nombre = Utilidades.textoSinEspaciosExtra(scanner, false, "Nombre: ");
 
-    precio = Utilidades.doubleValido(scanner, true, "Precio: ");
+    precio = Utilidades.doubleValido(scanner, true, true, "Precio: ");
 
     stock = Utilidades.integerValido(scanner, true, "Stock: ");
 
-    System.out.print("Descripción (opcional dejar en blanco): ");
-    descripcion = Utilidades.textoSinEspaciosExtra(scanner);
+    descripcion = Utilidades.textoSinEspaciosExtra(
+        scanner, true, "Descripción (opcional dejar en blanco): ");
 
     // Confirmar si se quiere agregar el producto
     // No crearlo aún para evitar generar su ID
     // Crear el producto solo si está confirmado
-    Utilidades.dejarEspacios(5);
+    Utilidades.crearLineas(30, true);
     System.out.println("Usted está por agregar el producto:");
     System.out.println("Tipo: " + tipo);
     System.out.println(mostrarVolumen(tipo, volumenLitros, pesoGramos));
     System.out.println("Nombre: " + nombre);
     System.out.printf("Precio: $%.2f%n", precio);
     System.out.println("Stock: " + stock);
-    System.out.println("Descripción: " + descripcion + "\n");
+    System.out.println("Descripción: " + descripcion);
 
+    Utilidades.crearLineas(30, true);
     if (confirmarAgregarProducto(scanner)) {
       // Crear producto y agregarlo
       if (tipo.equalsIgnoreCase("Bebida")) {
@@ -86,9 +87,11 @@ public class AgregarProducto {
 
       // Agregar el producto a la lista
       productos.agregarProducto(producto);
-      System.out.println("\nEl producto ha sido agregaddo con éxito.");
+      Utilidades.crearLineas(30, true);
+      System.out.println("El producto ha sido agregaddo con éxito.");
     } else {
-      System.out.println("\nEl producto no ha sido agregado.");
+      Utilidades.crearLineas(30, true);
+      System.out.println("El producto no ha sido agregado.");
     }
   }
 
@@ -139,7 +142,7 @@ public class AgregarProducto {
         "Plato principal popular", 450.0);
     Bebida producto5 = new Bebida("Jugo de Naranja Natural", 3200.00, 12,
         "Recién exprimido", 0.5);
-    Comida producto6 = new Comida("Sándwich de Miga Triple", 4800.00, 25,
+    Comida producto6 = new Comida("Sándwich de Miga Triple", 4800.00, 0,
         "Relleno de jamón y queso", 300.0);
     Bebida producto7 = new Bebida("Vino Malbec Joven", 8900.00, 6,
         "Tinto ligero y afrutado", 0.75);
@@ -161,6 +164,6 @@ public class AgregarProducto {
     productos.agregarProducto(producto9);
     productos.agregarProducto(producto10);
 
-    System.out.println("\nSe han agregado 10 productos para probar funcionalidades.");
+    System.out.println("Se han agregado 10 productos para probar funcionalidades.");
   }
 }

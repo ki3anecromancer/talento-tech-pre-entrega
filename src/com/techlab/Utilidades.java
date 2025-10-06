@@ -1,5 +1,6 @@
 package com.techlab;
 
+import com.techlab.excepciones.NombreInvalidoException;
 import com.techlab.opciones.AgregarProducto;
 import com.techlab.opciones.BuscarActualizarProducto;
 import com.techlab.opciones.CrearPedido;
@@ -59,7 +60,7 @@ public class Utilidades {
         break;
       case 4: // Eliminar producto
         dejarEspacios(20);
-        EliminarProducto.ejecutar(scanner, productos);
+        EliminarProducto.ejecutar(scanner, productos, pedidos);
         enterParaContinuar(scanner);
         dejarEspacios(20);
         break;
@@ -76,6 +77,7 @@ public class Utilidades {
         dejarEspacios(20);
         break;
       case 0: // Salir
+        crearLineas(30, true);
         System.out.println("Fin del programa...");
         break;
     }
@@ -110,11 +112,11 @@ public class Utilidades {
 
   public static void crearLineas(int cantidad, boolean espacioFinal) {
     for (int i = 0; i < cantidad; i++) {
-      if (i == cantidad - 1 && espacioFinal) {
-        System.out.println("=");
-      } else {
-        System.out.print("=");
-      }
+      System.out.print("=");
+    }
+
+    if (espacioFinal) {
+      System.out.println();
     }
   }
 
@@ -136,7 +138,9 @@ public class Utilidades {
     return opcion;
   }
 
-  public static Double doubleValido(Scanner scanner, boolean esPositivo, String mensaje) {
+  public static Double doubleValido(
+      Scanner scanner, boolean esPositivo, boolean puedeSerCero, String mensaje) {
+
     double numero;
 
     while (true) {
@@ -144,6 +148,9 @@ public class Utilidades {
         System.out.print(mensaje);
         numero = scanner.nextDouble();
 
+        if (!puedeSerCero && numero == 0) {
+          throw new DoubleInvalidoException();
+        }
         if (esPositivo && numero < 0) {
           throw new DoubleInvalidoException();
         }
@@ -182,22 +189,32 @@ public class Utilidades {
     return numero;
   }
 
-  public static String textoSinEspaciosExtra(Scanner scanner) {
-    String nombre = scanner.nextLine();
+  public static String textoSinEspaciosExtra(
+      Scanner scanner, boolean puedeEstarVacio, String mensaje) {
 
-    // Quitar espacios en blanco al comienzo y al final
-    // Reemplazar todos los espacios en blanco en el medio por uno solo
-    // "  a   b c " = "a b c"
-    return nombre.trim().replaceAll("\\s+", " ");
-  }
+    String nombre = "";
 
-  public static boolean nombreCompletoExiste(List<Producto> productos, String nombreProducto) {
-    for (Producto producto : productos) {
-      if (producto.getNombre().equalsIgnoreCase(nombreProducto)) {
-        return true;
+    while (true) {
+      try {
+        System.out.print(mensaje);
+        nombre = scanner.nextLine();
+
+        // Quitar espacios en blanco al comienzo y al final
+        // Reemplazar todos los espacios en blanco en el medio por uno solo
+        // "  a   b c " = "a b c"
+        nombre = nombre.trim().replaceAll("\\s+", " ");
+
+        if (!puedeEstarVacio && nombre.isBlank()) {
+          throw new NombreInvalidoException();
+        }
+
+        break;
+      } catch (NombreInvalidoException ex) {
+        System.out.println("El nombre no puede estar vacío.");
       }
     }
-    return false;
+
+    return nombre;
   }
 
   public static boolean nombreParcialExiste(Producto producto, String nombreProducto) {

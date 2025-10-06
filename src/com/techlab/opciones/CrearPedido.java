@@ -23,6 +23,7 @@ public class CrearPedido {
 
       switch (opcion) {
         case 1:
+          Utilidades.crearLineas(30, true);
           crearPedido(scanner, productos, pedidos);
           Utilidades.enterParaContinuar(scanner);
           Utilidades.dejarEspacios(20);
@@ -42,29 +43,35 @@ public class CrearPedido {
   private static void crearPedido(Scanner scanner, ProductosList productos, Pedidos pedidos) {
     int id;
 
-    System.out.println();
+    // Si no hay productos, regresar
+    if (productos.estaVacia()) {
+      System.out.println("No hay productos actualmente");
+      return;
+    }
+
     id = Utilidades.integerValido(scanner, true, "Ingrese la 'ID' del producto: ");
 
+    Utilidades.crearLineas(30, true);
     if (productos.existeId(id)) {
-      System.out.println("\nProducto seleccionado:");
+      System.out.println("Producto seleccionado:");
       productos.mostrarProductoPorId(id, true, true, true, true, true, true, true);
 
-      System.out.println();
       // Si no hay stock, cancelar
       if (productos.getProductoPorId(id).getStock() == 0) {
+        Utilidades.crearLineas(30, true);
         System.out.println("El producto se encuentra sin stock actualmente.");
       } else {
-        int cantidad = Utilidades.integerValido(scanner, true, "Cantidad deseada: ");
+        int cantidad = Utilidades.integerValido(scanner, true, "\nCantidad deseada: ");
 
+        Utilidades.crearLineas(30, true);
         // Si el stock excede el disponible o la solicitud es 0, cancelar
         if (cantidad > productos.getProductoPorId(id).getStock()) {
-          System.out.println("\n(!) Cantidad excesiva, stock actual: " +
+          System.out.println("(!) Cantidad excesiva, stock actual: " +
               productos.getProductoPorId(id).getStock());
         } else if (cantidad == 0) {
-          System.out.println("\n(!) No se pueden agregar 0 productos. Ingrese una cantidad real.");
+          System.out.println("(!) No se pueden agregar 0 productos. Ingrese una cantidad real.");
         } else {
-          Utilidades.crearLineas(30, true);
-          System.out.println("\nPedidos solicitado:");
+          System.out.println("Pedidos solicitado:");
           System.out.printf("%18s %d x %s",
               "Pedidos:", cantidad, productos.getProductoPorId(id).getNombre());
           System.out.printf("%n%18s $%.2f",
@@ -108,14 +115,16 @@ public class CrearPedido {
             productos.actualizarTodosLosAnchos();
             pedidos.getProductos().actualizarTodosLosAnchos();
 
-            System.out.println("\nEl pedido ha sido realizado con éxito.");
+            Utilidades.crearLineas(30, true);
+            System.out.println("El pedido ha sido realizado con éxito.");
           } else {
-            System.out.println("\nPedidos cancelado.");
+            Utilidades.crearLineas(30, true);
+            System.out.println("Pedidos cancelado.");
           }
         }
       }
     } else {
-      System.out.println("\nNo existe un producto con la ID: " + id);
+      System.out.println("(!) No existe un producto con la ID: " + id);
     }
   }
 }

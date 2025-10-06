@@ -1,30 +1,44 @@
 # Talento Tech 25254 - PRE Entrega Proyecto
 
-### Información general:
+## Funcionamiento del programa:
+#### Opción 1: Agregar producto
+1. Permite crear un nuevo producto manualmente, la ID es autogenerada.
+2. Agrega 10 productos ya precargados para probar el programa rápido.
+
+#### Opción 2: Lista productos
+1. Muestra una tabla con todos los productos, ordenada por cuándo fueron agregados.
+
+#### Opción 3: Buscar/Actualizar producto
+1. Muestra en forma de tabla todos los productos de la lista que contengan la palabra elegida.
+2. Muestra en forma de tabla el producto con la ID elegida.
+3. Muestra en forma de tabla todos los productos que coincidan con el tipo elegido.
+4. Permite actualizar los datos de un producto excepto su ID. Se elige el producto a través de su ID.
+
+#### Opción 4: Eliminar producto
+1. Permite eliminar un producto elegido por su ID. Si el producto estaba en la lista de pedidos,
+también es eliminado de la misma.
+
+#### Opción 5: Crear pedido
+1. Permite crear un pedido con la ID de un producto. El stock solicitado es restado del producto.
+Si se crea un nuevo pedido con una misma ID, entonces se suma al pedido ya existente.
+
+#### Opción 6: Lista pedidos
+1. Permite modificar un pedido por su ID, sólo se puede cambiar el stock solicitado, y la cantidad
+se refleja en el stock del producto requerido.
+2. Permite borrar un pedido por su ID. Si es borrado, el stock vuelve al producto.
+
+## Información general:
 
 - Proyecto de consola: simulación de una tienda.
 
 - CRUD de productos con lista de pedidos.
 
-- __Qué se utilizó de lo visto en clases:__ condicionales, bucles, operadores ariméticos y lógicos, 
-manejo de cadenas (uso de StringBuilder) y listas, modularización, POO, variables de clase estáticas,
-encapsulamiento, herencia y polimorfismo, try/cath y excepciones personalizadas, orden del proyecto
-en packages.
-
-- Se ha optado por seguir las sugerencias de las consignas, como el nombre de las clases, su
-herencia y packages, además de las opciones de la lista principal.
-
 - Advertencia: el proyecto fue usado para experimentar e ir agregando o modificando contenido a
-  medida que se me ocurría, por lo que no está debidamente ordenado. Todo cumpliendo con las
-  consignas.
+  medida que se me ocurría, por lo que no está debidamente ordenado.
 
 - (Contenido libre de Inteligencia Artificial).
 
-### Funcionamiento del programa:
-
-### Descripción del código:
-
-- Las entidades se encuentran en el package productos.
+## Descripción del código:
 
 - __ProductosList__ contiene las listas de productos para que cada lista tenga su propio ancho de 
 columnas, permitiendo mostrar los datos en forma de tabla estética y ajustada al tamaño de su

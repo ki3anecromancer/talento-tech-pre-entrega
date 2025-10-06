@@ -6,7 +6,7 @@ public class Bebida extends Producto {
   private int anchoVolumen;
 
   public Bebida(String nombre, Double precio, int stock, String descripcion, double volumenLitros) {
-    super(nombre, precio, stock, descripcion);
+    super(nombre, precio, stock, descripcion, "Bebida");
     this.volumenLitros = volumenLitros;
 
     anchoVolumen = Integer.toString((int) volumenLitros).length() + 6;
