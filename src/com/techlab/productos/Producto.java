@@ -5,6 +5,12 @@ public class Producto {
   // Tamaño de la columna en consola
   private int volumenMaxAncho = 12;
 
+  // Ancho de cada atributo
+  private int anchoId;
+  private int anchoNombre;
+  private int anchoPrecio;
+  private int anchoStock;
+
   private static int contadorId = 1; // Único y auto-incremental, simula Base de Datos
   private int id;
   private String nombre;
@@ -19,6 +25,12 @@ public class Producto {
     this.precio = precio;
     this.stock = stock;
     this.descripcion = descripcion;
+
+    // Definir los anchos
+    anchoId = anchoInt(id);
+    anchoNombre = nombre.length();
+    anchoPrecio = anchoDouble(precio, 3);
+    anchoStock = anchoInt(stock);
   }
 
   private int calcularAncho(int maxAncho, int nuevoAncho) {
@@ -27,6 +39,14 @@ public class Producto {
 
   public void calcularVolumenancho(int nuevoAncho) {
     volumenMaxAncho = calcularAncho(volumenMaxAncho, nuevoAncho);
+  }
+
+  private int anchoInt(int intConvertir) {
+    return Integer.toString(intConvertir).length();
+  }
+
+  private int anchoDouble(double doubleConvertir, int espacioExtra) {
+    return Integer.toString((int) doubleConvertir).length() + espacioExtra;
   }
 
   public void setIdReducirContador(int id) {
@@ -44,6 +64,7 @@ public class Producto {
 
   public void setNombre(String nombre) {
     this.nombre = nombre;
+    anchoNombre = nombre.length();
   }
 
   public double getPrecio() {
@@ -52,6 +73,7 @@ public class Producto {
 
   public void setPrecio(Double precio) {
     this.precio = precio;
+    anchoPrecio = anchoDouble(precio, 3);
   }
 
   public int getStock() {
@@ -60,6 +82,7 @@ public class Producto {
 
   public void setStock(int stock) {
     this.stock = stock;
+    anchoStock = anchoInt(stock);
   }
 
   public String getDescripcion() {
@@ -76,5 +99,22 @@ public class Producto {
 
   public double getPrecioTotal() {
     return stock * precio;
+  }
+
+  // Getters de ancho
+  public int getAnchoId() {
+    return anchoId;
+  }
+
+  public int getAnchoNombre() {
+    return anchoNombre;
+  }
+
+  public int getAnchoPrecio() {
+    return anchoPrecio;
+  }
+
+  public int getAnchoStock() {
+    return anchoStock;
   }
 }

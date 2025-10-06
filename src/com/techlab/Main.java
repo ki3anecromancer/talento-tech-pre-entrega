@@ -6,6 +6,5 @@ public class Main {
 
     Minimercado minimercado = new Minimercado();
     minimercado.abrir();
-    System.out.println("Programa terminado");
   }
 }

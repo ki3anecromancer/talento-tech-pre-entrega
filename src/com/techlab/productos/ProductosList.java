@@ -51,16 +51,10 @@ public class ProductosList {
   }
 
   private void calcularAnchoAgregado(Producto producto) {
-    // Variables separadas para claridad
-    int idAncho = anchoInt(producto.getId());
-    int nombreAncho = producto.getNombre().length();
-    int precioAncho = anchoDouble(producto.getPrecio(), 3);
-    int stockAncho = anchoInt(producto.getStock());
-
-    idMaxAncho = calcularAncho(idMaxAncho, idAncho);
-    nombreMaxAncho = calcularAncho(nombreMaxAncho, nombreAncho);
-    precioMaxAncho = calcularAncho(precioMaxAncho, precioAncho);
-    stockMaxAncho = calcularAncho(stockMaxAncho, stockAncho);
+    idMaxAncho = calcularAncho(idMaxAncho, producto.getAnchoId());
+    nombreMaxAncho = calcularAncho(nombreMaxAncho, producto.getAnchoNombre());
+    precioMaxAncho = calcularAncho(precioMaxAncho, producto.getAnchoPrecio());
+    stockMaxAncho = calcularAncho(stockMaxAncho, producto.getAnchoStock());
 
     // El ancho del volumen ya está calculado cuando se crea el objeto
     volumenMaxAncho = producto.getVolumenMaxAncho();
@@ -81,10 +75,10 @@ public class ProductosList {
 
     for (Producto producto : productos) {
       // Cargar los anchos de cada producto en su propia variable
-      prodId = calcularAncho(idAncho, anchoInt(producto.getId()));
-      prodNombre = calcularAncho(nombreAncho, producto.getNombre().length());
-      prodPrecio = calcularAncho(precioAncho, anchoDouble(producto.getPrecio(), 3));
-      prodStock = calcularAncho(stockAncho, anchoInt(producto.getStock()));
+      prodId = calcularAncho(idAncho, producto.getAnchoId());
+      prodNombre = calcularAncho(nombreAncho, producto.getAnchoNombre());
+      prodPrecio = calcularAncho(precioAncho, producto.getAnchoPrecio());
+      prodStock = calcularAncho(stockAncho, producto.getAnchoStock());
       if (producto.getClass() == Bebida.class) {
         prodVolumen = calcularAncho(volumenAncho, ((Bebida) producto).getAnchoVolumen());
       } else if (producto.getClass() == Comida.class) {
@@ -115,14 +109,6 @@ public class ProductosList {
     precioMaxAncho = precioAncho;
     stockMaxAncho = stockAncho;
     volumenMaxAncho = volumenAncho;
-  }
-
-  private int anchoInt(int int_convertir) {
-    return Integer.toString(int_convertir).length();
-  }
-
-  private int anchoDouble(double double_convertir, int espacioExtra) {
-    return Integer.toString((int) double_convertir).length() + espacioExtra;
   }
 
   private int getIdMaxAncho() {
